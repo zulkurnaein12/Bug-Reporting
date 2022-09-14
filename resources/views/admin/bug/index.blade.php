@@ -51,7 +51,7 @@
                                 </td>
 
                                 <td>
-                                    <a name="" id="" class="btn btn-primary"
+                                    <a name="" id="" class="btn btn-success"
                                         href="{{ route('admin.bug.edit', $bug->id) }}" role="button">
                                         <i class="bi bi-pencil"></i></a>
 
@@ -59,27 +59,44 @@
                                         href="{{ route('admin.bug.show', $bug->id) }}" role="button">
                                         <i class="bi bi-eye-fill"></i></a>
 
-                                    <form onsubmit="return confirm('Delete this Program permanently?')" class="d-inline"
-                                        action="{{ route('admin.bug.destroy', [$bug->id]) }}" method="POST">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#verticalycentered">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                    <div class="modal fade" id="verticalycentered" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title"><b>Are you sure delete this table?</b></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <span>All data will be lose</span>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form class="d-inline"
+                                                        action="{{ route('admin.bug.destroy', [$bug->id]) }}"
+                                                        method="POST">
 
-                                        @csrf
+                                                        @csrf
 
-                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <input type="hidden" name="_method" value="DELETE">
 
-                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                                        <input type="submit" value="Delete" class="btn btn-danger">
 
-                                    </form>
+                                                    </form>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Vertically centered Modal-->
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
-                        {{-- <th>No</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Image</th>
-                        <th>Status</th>
-                        <th>Action</th> --}}
                     </tfoot>
                 </table>
             </div>

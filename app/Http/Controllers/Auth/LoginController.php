@@ -27,7 +27,7 @@ class LoginController extends Controller
             return redirect()->route('admin.index');
         }
 
-        return redirect()->route('home');
+        return redirect()->route('user.index');
     }
     /**
      * Where to redirect users after login.

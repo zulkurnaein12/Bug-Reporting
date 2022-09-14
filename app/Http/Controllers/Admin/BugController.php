@@ -89,8 +89,7 @@ class BugController extends Controller
     public function edit($id)
     {
         $bug = Bug::find($id);
-        $url = route('admin.bug.update', $bug->id);
-        return view('admin.bug.create', compact('bug', 'url'));
+        return view('admin.bug.edit', compact('bug'));
     }
 
     /**

@@ -55,14 +55,14 @@
                         @method('PUT')
                     @endif
                     <input type="hidden" name="bug_id" value="{{ $bug->id }}">
-                    <div class="form-group mt-3">
+                    <div class="d-flex gap-2 form-group mt-3">
                         <select class="form-select"name="user_id" id="">
                             <option disabled value="">-- Pilih Programmer --</option>
                             @foreach ($users as $user)
                                 <option value=" {{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
                         </select>
-                        <button type="submit" class="btn btn-primary mt-2">SUBMIT</button>
+                        <button type="submit" class="btn btn-primary">SUBMIT</button>
                     </div>
                 </form>
             </div>

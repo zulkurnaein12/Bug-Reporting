@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Task::class);
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

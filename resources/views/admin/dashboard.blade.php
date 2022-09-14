@@ -18,102 +18,122 @@
             <div class="col-lg-8">
                 <div class="row">
 
-                    <!-- Sales Card -->
+
+                    <!-- Member Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card sales-card">
 
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                        class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
-
                             <div class="card-body">
-                                <h5 class="card-title">Sales <span>| Today</span></h5>
+                                <h5 class="card-title">Member</h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people"></i>
+                                        <i class="bi bi-people-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
-                                        <span class="text-success small pt-1 fw-bold">12%</span> <span
+                                        <h6>0</h6>
+                                        <span class="text-success small pt-1 fw-bold">0%</span> <span
                                             class="text-muted small pt-2 ps-1">increase</span>
-
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                    </div><!-- End Sales Card -->
+                    </div><!-- End member Card -->
 
-                    <!-- Revenue Card -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card revenue-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Revenue <span>| This Month</span></h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-currency-dollar"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <h6>$3,264</h6>
-                                        <span class="text-success small pt-1 fw-bold">8%</span> <span
-                                            class="text-muted small pt-2 ps-1">increase</span>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div><!-- End Revenue Card -->
-                    <!-- Sales Card -->
+                    <!-- Programmer Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card sales-card">
 
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                        class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
-
                             <div class="card-body">
-                                <h5 class="card-title">Sales <span>| Today</span></h5>
+                                <h5 class="card-title">Programmer</h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people"></i>
+                                        <i class="bi bi-person-plus-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
-                                        <span class="text-success small pt-1 fw-bold">12%</span> <span
+                                        <h6>0</h6>
+                                        <span class="text-success small pt-1 fw-bold">0%</span> <span
                                             class="text-muted small pt-2 ps-1">increase</span>
-
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                    </div><!-- End Sales Card -->
+                    </div><!-- End programmer Card -->
+
+                    <!-- Bug Handled Card-->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card sales-card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Bug Handled</h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-bug-fill"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>0</h6>
+                                        <span class="text-success small pt-1 fw-bold">0%</span> <span
+                                            class="text-muted small pt-2 ps-1">increase</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- Bug Handler Card-->
+
+                    <!-- Best Solution Card -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card sales-card">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Best Solution</h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-check-lg"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>0</h6>
+                                        <span class="text-success small pt-1 fw-bold">0%</span> <span
+                                            class="text-muted small pt-2 ps-1">increase</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Best Solution Card -->
+
                 </div>
             </div>
+            <!-- Buttom side columns -->
+
+            <!-- Right side columns -->
+            <div class="col-lg-3">
+
+                <!-- Task Card -->
+                <div class="card info-card sales-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Task</h5>
+                        <div class="activity">
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-list-task"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>0</h6>
+                                    <span class="text-success small pt-1 fw-bold">0%</span> <span
+                                        class="text-muted small pt-2 ps-1">increase</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End Task Card -->
+            </div><!-- End Right side colomns -->
+
         </div>
     </section>
 @endsection

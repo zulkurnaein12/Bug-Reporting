@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bug;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BugController extends Controller
@@ -13,7 +15,7 @@ class BugController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $bugs = Bug::all();
         return view('user.bug.index', compact('bugs'));
@@ -37,6 +39,20 @@ class BugController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->validate([
+            'name' => 'required|string',
+            'description' => 'nullable',
+            'image' => 'image|nullable',
+            'status' => 'required',
+        ]);
+        if ($request->file('image')) {
+            $file = $request->file('image')->store('bugs', 'public');
+            $data['image'] = $file;
+        }
+
+
+        Bug::create($data);
+        return redirect()->route('user.bug.index');
     }
 
     /**
@@ -47,7 +63,11 @@ class BugController extends Controller
      */
     public function show($id)
     {
-        //
+        $bug = \App\Models\Bug::findOrFail($id);
+
+        $comments = $bug->comments->load('comments');
+        // return response()->json($comments);
+        return view('user.bug.show', ['bug' => $bug], compact('comments'));
     }
 
     /**

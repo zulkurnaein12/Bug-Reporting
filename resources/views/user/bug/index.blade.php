@@ -9,57 +9,55 @@
                 <li class="breadcrumb-item active">Bug</li>
             </ol>
         </nav>
-    </div>
-
-    <section class="section">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title"></h4>
-                <br>
-
-                <table class="table">
-                    <thead class="table-primary">
-                        <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Status</th>
-                            <th>Start</th>
-                            <th>End</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($tasks as $task)
+        <br>
+        <section class="section">
+            <div class="card">
+                <div class="card-body">
+                    <table id="myDataTable" class="table">
+                        <thead>
                             <tr>
-                                <td scope="row">{{ $loop->iteration }}</td>
-                                <td>{{ $task->bugs->name }}</td>
-                                <td>
-                                    @if ($task->status == 'PENDING')
-                                        <span class="badge bg-primary text-light">{{ $task->status }}</span>
-                                    @elseif($task->status == 'WAITING APPROVAL')
-                                        <span class="badge bg-warning text-light">{{ $task->status }}</span>
-                                    @elseif($task->status == 'APPROVED')
-                                        <span class="badge bg-success text-light">{{ $task->status }}</span>
-                                    @elseif($task->status == 'REJECTED')
-                                        <span class="badge bg-danger text-light">{{ $task->status }}</span>
-                                    @endif
-                                </td>
-
-                                <td>{{ $task->start }}</td>
-                                <td>{{ $task->end }}</td>
-                                <td>
-                                    <!-- Modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#basicModal-{{ $task->id }}">
-                                        Show <i class="bi bi-eye-fill"></i></a>
-                                    </button>
-
-                                </td>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
-                    </tbody>
-                    @endforeach
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($bugs as $bug)
+                                <tr>
+                                    <td scope="row">{{ $loop->iteration }}</td>
+                                    <td>{{ $bug->name }}</td>
+                                    <td>{{ $bug->description }}</td>
+                                    <td>
+                                        @if ($bug->image)
+                                            <a href="{{ asset('storage/' . $bug->image) }}" width="70px">Image</a>
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        @if ($bug->status == 'SOLVED')
+                                            <span class="badge bg-info text-light">{{ $bug->status }}</span>
+                                        @elseif($bug->status == 'NO SOLVED')
+                                            <span class="badge bg-danger text-light">{{ $bug->status }}</span>
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        <a name="" id="" class="btn btn-primary"
+                                            href="{{ route('user.bug.show', $bug->id) }}" role="button">Show
+                                            <i class="bi bi-eye-fill"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-        </div>
-    </section>
-@endsection
+        </section>
+    @endsection
