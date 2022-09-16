@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bug;
 use Illuminate\Http\Request;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -9,6 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('user.dashboard');
+        $bugs = Bug::count();
+        return view('user.dashboard', compact('bugs'));
     }
 }

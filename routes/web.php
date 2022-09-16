@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\BugController as UserBugController;
 use App\Http\Controllers\User\CommentController;
+use App\Http\Controllers\User\TaskController as UserTaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Auth::routes();
 Route::middleware('role:user')->name('user.')->prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::resource('bug', UserBugController::class);
+    Route::resource('task', UserTaskController::class);
     Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
     Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
 });

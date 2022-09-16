@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bug;
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -14,7 +17,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::where('user_id', Auth::user()->id)->get();
+        return view('user.task.index', compact('tasks'));
     }
 
     /**
@@ -24,7 +28,6 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,7 +38,21 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->validate([
+            'bug_id' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        $data['start'] = date('Y-m-d');
+        $data['end'] = null;
+        $data['status'] = 'PENDING';
+
+        Task::firstOrCreate([
+            'bug_id' => $request->bug_id,
+            'user_id' => $request->user_id,
+        ], $data);
+        return redirect()->route('user.task.index');
     }
 
     /**
@@ -57,7 +74,9 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::find($id);
+
+        return view('user.task.update', compact('task'));
     }
 
     /**
@@ -69,7 +88,18 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required',
+            'description' => 'nullable',
+            'status' => 'required',
+        ]);
+        $task = Task::find($id);
+
+        if ($request->status == 'WAITING APPROVAL') {
+            $data['end'] = now();
+        }
+        $task->update($data);
+        return redirect()->route('user.task.index');
     }
 
     /**
