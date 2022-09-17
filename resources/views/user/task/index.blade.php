@@ -15,7 +15,7 @@
                 <div class="card-body mt-3">
                     <h4 class="card-title">Tabel Task</h4>
                     <table id="myDataTable" class="table">
-                        <thead class="table-primary">
+                        <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
@@ -45,10 +45,9 @@
                                     <td>{{ $task->end }}</td>
                                     <td>
                                         <!-- Modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#basicModal-{{ $task->id }}">
-                                            Show <i class="bi bi-eye-fill"></i></a>
-                                        </button>
+                                        <a name="" id="" class="btn btn-primary"
+                                            href="{{ route('user.task.edit', $task->id) }}" role="button">Finish This
+                                            Task</i></a>
                                     </td>
                                 </tr>
                         </tbody>
@@ -57,7 +56,7 @@
                 </div>
             </div>
         </section>
-        @foreach ($tasks as $task)
+        {{-- @foreach ($tasks as $task)
             <!-- Modal -->
             <div class="modal fade" id="basicModal-{{ $task->id }}" tabindex="-1">
                 <div class="modal-dialog">
@@ -72,26 +71,13 @@
                                 @if (@$task)
                                     @method('PUT')
                                 @endif
-                                <input type="hidden" name="bug_id" value="{{ $task->bugs->id }}">
+                                <label for="">Bug Name</label>
+                                <input type="text" class="form-control" name="bug_id" value="{{ $task->bugs->name }}">
                                 <div class="form-group mt-3">
                                     <label for="">Description</label>
                                     <textarea class="form-control" name="description" id="" rows="3">{{ $task->description ?? '' }}</textarea>
                                 </div>
-                                @php
-                                    $status = ['PENDING', 'WAITING APPROVAL'];
-                                @endphp
-                                <div class="form-group mt-3">
-                                    <label for="">Status</label>
-                                    <select class="form-select" name="status" id="floatingSelect"
-                                        aria-label="Floating label select example" value="{{ $task->status ?? '' }}">
-                                        <option> -- Choose --</option>
-                                        @foreach ($status as $stat)
-                                            <option value="{{ $stat }}"
-                                                {{ $stat == $task->status ? 'selected' : '' }}>{{ $stat }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+
                                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
                             </form>
                         </div>
@@ -103,5 +89,5 @@
                 </div>
             </div>
             <!-- End Basic Modal-->
-        @endforeach
+        @endforeach --}}
     @endsection

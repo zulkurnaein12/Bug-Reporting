@@ -69,36 +69,32 @@
                                 <button type="submit" class="btn btn-primary">Send Message</button>
                             </div>
                         </form>
-                        <br>
-
                     </div>
                 </div>
             </div>
+            {{-- Card Programmer --}}
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body mt-2">
-                        <img src="{{ asset('nice') }}/assets/img/logo.png" alt="" align="left"
-                            style="width: 40px; height: 40px; border-radius: 50%;">
-                        &nbsp;&nbsp;Jack
-                        &nbsp;&nbsp;<span class="badge bg-danger text-light">UNSOLVED</span><br>
-                        &nbsp;&nbsp;<th>Web Desaigner</th>
-                        <br><br>
-                        <img src="{{ asset('nice') }}/assets/img/logo.png" alt="" align="left"
-                            style="width: 40px; height: 40px; border-radius: 50%;">
-                        &nbsp;&nbsp;Jack
-                        &nbsp;&nbsp;<span class="badge bg-success text-light">SOLVED</span><br>
-                        &nbsp;&nbsp;<th>Web Desaigner</th>
-                        <br><br>
-                        <img src="{{ asset('nice') }}/assets/img/logo.png" alt="" align="left"
-                            style="width: 40px; height: 40px; border-radius: 50%;">
-                        &nbsp;&nbsp;Jack
-                        &nbsp;&nbsp;<span class="badge bg-primary text-light">ONGOING</span><br>
-                        &nbsp;&nbsp;<th>Web Desaigner</th>
-                        <br><br>
-
+                        @foreach ($tasks as $task)
+                            <img src="{{ asset('nice') }}/assets/img/logo.png" alt="" align="left"
+                                style="width: 40px; height: 40px; border-radius: 50%;">
+                            &nbsp;&nbsp;{{ $task->users->name }}
+                            &nbsp;&nbsp;@if ($task->status == 'PENDING')
+                                        <span class="badge bg-primary text-light">{{ $task->status }}</span>
+                                    @elseif($task->status == 'WAITING APPROVAL')
+                                        <span class="badge bg-warning text-light">{{ $task->status }}</span>
+                                    @elseif($task->status == 'APPROVED')
+                                        <span class="badge bg-success text-light">{{ $task->status }}</span>
+                                    @elseif($task->status == 'REJECTED')
+                                        <span class="badge bg-danger text-light">{{ $task->status }}</span>
+                                    @endif<br>
+                            <br><br>
+                        @endforeach
                     </div>
                 </div>
             </div>
+            {{-- Card Comment --}}
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -109,7 +105,7 @@
                                 <a class="btn btn-primary m-lg-3" data-bs-toggle="collapse"
                                     href="#collapseExample-{{ $comment->id }}" role="button" aria-expanded="false"
                                     aria-controls="collapseExample">
-                                    Comment Reply
+                                    Reply Comment
                                 </a></strong>
                             <p>{{ $comment->message }}</p>
                             <form method="post" action="{{ route('user.reply.add') }}">

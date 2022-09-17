@@ -75,8 +75,9 @@ class TaskController extends Controller
     public function edit($id)
     {
         $task = Task::find($id);
-
-        return view('user.task.update', compact('task'));
+        $task->status = 'WAITING APPROVAL';
+        $task->save();
+        return redirect()->route('user.task.index');
     }
 
     /**
@@ -88,18 +89,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'user_id' => 'required',
-            'description' => 'nullable',
-            'status' => 'required',
-        ]);
-        $task = Task::find($id);
-
-        if ($request->status == 'WAITING APPROVAL') {
-            $data['end'] = now();
-        }
-        $task->update($data);
-        return redirect()->route('user.task.index');
+        //
     }
 
     /**
