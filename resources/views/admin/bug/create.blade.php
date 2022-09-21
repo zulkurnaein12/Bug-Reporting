@@ -53,7 +53,7 @@
                             <option value="no solved">NO SOLVED</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
 
             </div>

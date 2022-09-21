@@ -18,29 +18,6 @@
             <div class="col-lg-8">
                 <div class="row">
 
-
-                    <!-- Member Card -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
-
-                            <div class="card-body">
-                                <h5 class="card-title">Member</h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people-fill"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <h6>{{ $users }}</h6>
-                                        <span class="text-success small pt-1 fw-bold">0%</span> <span
-                                            class="text-muted small pt-2 ps-1">increase</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div><!-- End member Card -->
-
                     <!-- Programmer Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card sales-card">
@@ -54,8 +31,6 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>{{ $programmers }}</h6>
-                                        <span class="text-success small pt-1 fw-bold">0%</span> <span
-                                            class="text-muted small pt-2 ps-1">increase</span>
                                     </div>
                                 </div>
                             </div>
@@ -76,8 +51,6 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>{{ $bugs }}</h6>
-                                        <span class="text-success small pt-1 fw-bold">0%</span> <span
-                                            class="text-muted small pt-2 ps-1">increase</span>
                                     </div>
                                 </div>
                             </div>
@@ -97,9 +70,7 @@
                                         <i class="bi bi-check-lg"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>0</h6>
-                                        <span class="text-success small pt-1 fw-bold">0%</span> <span
-                                            class="text-muted small pt-2 ps-1">increase</span>
+                                        <h6>{{ $approved }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -125,15 +96,12 @@
                                 </div>
                                 <div class="ps-3">
                                     <h6>{{ $tasks }}</h6>
-                                    <span class="text-success small pt-1 fw-bold">0%</span> <span
-                                        class="text-muted small pt-2 ps-1">increase</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!-- End Task Card -->
             </div><!-- End Right side colomns -->
-
         </div>
     </section>
 @endsection

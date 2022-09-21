@@ -51,21 +51,23 @@
                                 value="{{ $bug->image ?? '' }}">
                         </div>
                     </div>
-
+                    @php
+                        $status = ['SOLVED', 'NO SOLVED'];
+                    @endphp
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Status</label>
                         <div class="col-sm-10">
                             <select class="form-select" name="status" aria-label="Default select example"
                                 value="{{ $bug->status ?? '' }}">
-                                <option selected></option>
-                                <option value="solved">SOLVED</option>
-                                <option value="no solved">NO SOLVED</option>>
+                                @foreach ($status as $stat)
+                                    <option value="{{ $stat }}" {{ $stat == $bug->status ? 'selected' : '' }}>
+                                        {{ $stat }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Cancel</button>
                     </div>
 
                 </form>

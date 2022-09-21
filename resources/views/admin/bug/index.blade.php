@@ -12,7 +12,7 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-primary" name="" id="" href="{{ route('admin.bug.create') }}">Add</a>
         </div>
-        <br>
+
     </div>
     <section class="section">
         <div class="card">
@@ -29,8 +29,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{-- @php $no = 1; @endphp --}}
                         @foreach ($bugs as $bug)
                             <tr>
+                                {{-- <td>{{ ($bugs->currentPage() - 1) * $bugs->perPage() + $loop->iteration }}</td> --}}
                                 <td scope="row">{{ $loop->iteration }}</td>
                                 <td>{{ $bug->name }}</td>
                                 <td>{{ $bug->description }}</td>

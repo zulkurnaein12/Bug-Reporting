@@ -77,18 +77,26 @@
                 <div class="card">
                     <div class="card-body mt-2">
                         @foreach ($tasks as $task)
-                            <img src="{{ asset('nice') }}/assets/img/logo.png" alt="" align="left"
-                                style="width: 40px; height: 40px; border-radius: 50%;">
+                            @if (Auth::user()->avatar)
+                                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="" align="left"
+                                    style="width: 40px; height: 40px; border-radius: 50%;">
+                            @else
+                                <img src="{{ asset('nice') }}/assets/img/profile-img.jpg" alt="" align="left"
+                                    style="width: 40px; height: 40px; border-radius: 50%;">
+                            @endif
+                            {{-- <img src="{{ asset('nice') }}/assets/img/logo.png" alt="" align="left"
+                                style="width: 40px; height: 40px; border-radius: 50%;"> --}}
                             &nbsp;&nbsp;{{ $task->users->name }}
                             &nbsp;&nbsp;@if ($task->status == 'PENDING')
-                                        <span class="badge bg-primary text-light">{{ $task->status }}</span>
-                                    @elseif($task->status == 'WAITING APPROVAL')
-                                        <span class="badge bg-warning text-light">{{ $task->status }}</span>
-                                    @elseif($task->status == 'APPROVED')
-                                        <span class="badge bg-success text-light">{{ $task->status }}</span>
-                                    @elseif($task->status == 'REJECTED')
-                                        <span class="badge bg-danger text-light">{{ $task->status }}</span>
-                                    @endif<br>
+                                <span class="badge bg-primary text-light">{{ $task->status }}</span>
+                            @elseif($task->status == 'WAITING APPROVAL')
+                                <span class="badge bg-warning text-light">{{ $task->status }}</span>
+                            @elseif($task->status == 'APPROVED')
+                                <span class="badge bg-success text-light">{{ $task->status }}</span>
+                            @elseif($task->status == 'REJECTED')
+                                <span class="badge bg-danger text-light">{{ $task->status }}</span>
+                            @endif
+                            <br>
                             <br><br>
                         @endforeach
                     </div>
@@ -122,6 +130,13 @@
                             @foreach ($comment->comments as $reply)
                                 <div class="collapse" id="collapseExample-{{ $comment->id }}">
                                     <div class="card card-body">
+                                        @if (Auth::user()->avatar)
+                                            <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt=""
+                                                align="left" style="width: 40px; height: 40px; border-radius: 50%;">
+                                        @else
+                                            <img src="{{ asset('nice') }}/assets/img/profile-img.jpg" alt=""
+                                                align="left" style="width: 40px; height: 40px; border-radius: 50%;">
+                                        @endif
                                         <strong class="text-muted">{{ $reply->users->name }} -
                                             {{ $reply->created_at->diffForHumans() }}</strong>
                                         <p class="text-muted"> {{ $reply->message }}</p>

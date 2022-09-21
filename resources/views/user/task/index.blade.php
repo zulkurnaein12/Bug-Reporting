@@ -32,13 +32,17 @@
                                     <td>{{ $task->bugs->name }}</td>
                                     <td>
                                         @if ($task->status == 'PENDING')
-                                            <span class="badge bg-primary text-light">{{ $task->status }}</span>
+                                            <span class="badge bg-primary text-light"
+                                                style="font-size: 13px">{{ $task->status }}</span>
                                         @elseif($task->status == 'WAITING APPROVAL')
-                                            <span class="badge bg-warning text-light">{{ $task->status }}</span>
+                                            <span class="badge bg-warning text-light"
+                                                style="font-size: 13px">{{ $task->status }}</span>
                                         @elseif($task->status == 'APPROVED')
-                                            <span class="badge bg-success text-light">{{ $task->status }}</span>
+                                            <span class="badge bg-success text-light"
+                                                style="font-size: 13px">{{ $task->status }}</span>
                                         @elseif($task->status == 'REJECTED')
-                                            <span class="badge bg-danger text-light">{{ $task->status }}</span>
+                                            <span class="badge bg-danger text-light"
+                                                style="font-size: 13px">{{ $task->status }}</span>
                                         @endif
                                     </td>
                                     <td>{{ $task->start }}</td>

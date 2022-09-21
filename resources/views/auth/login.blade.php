@@ -63,11 +63,10 @@
                                             </label>
                                         </div>
                                         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                                        @if (Route::has('password.request'))
-                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
-                                            </a>
-                                        @endif
+                                        <div class="col-12">
+                                            <p class="small mb-0">Don't have account? <a
+                                                    href="{{ route('register') }}">Create an account</a></p>
+                                        </div>
                                     </form>
 
                                 </div>

@@ -13,6 +13,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-body">
+
                     <table id="myDataTable" class="table">
                         <thead>
                             <tr>

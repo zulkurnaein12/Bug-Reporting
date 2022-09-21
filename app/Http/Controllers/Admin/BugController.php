@@ -17,17 +17,9 @@ class BugController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $filterKeyword = $request->get('name');
-
-        $query = Bug::query();
-
-        if ($filterKeyword) {
-            $query = $query->where("name", "LIKE", "%$filterKeyword%");
-        }
-
-        $bugs = $query->paginate(5);
+        $bugs = Bug::all();
         return view('admin.bug.index', compact('bugs'));
     }
 
