@@ -14,42 +14,29 @@
         <a class="btn btn-primary" name="" id="" href="{{ route('user.bug.index') }}">Back</a>
     </div>
     <section class="section">
-        <div class="card">
-            <div class="card-body mt-3">
-                <div class="row">
-                    <div class="col-md-5">
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <th></th>
-                                    <td>
-                                        <p class="text-primary">{{ $bug->name }}</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td>
-                                        @if ($bug->status == 'SOLVED')
-                                            <span class="badge bg-success">{{ $bug->status }}</span>
-                                        @elseif($bug->status == 'NO SOLVED')
-                                            <span class="badge bg-danger text-light">{{ $bug->status }}</span>
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td>
-                                        @if ($bug->image)
-                                            <img src="{{ asset('storage/' . $bug->image) }}" width="300px">
-                                        @endif
-                                    </td>
-                                    <td> {{ $bug->description }} </td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    @if ($bug->image)
+                        <img src="{{ asset('storage/' . $bug->image) }}" class="img-fluid rounded-start">
+                    @endif
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $bug->name }}</h5>
+                        <h5>
+                            @if ($bug->status == 'SOLVED')
+                                <span class="badge bg-success">{{ $bug->status }}</span>
+                            @elseif($bug->status == 'NO SOLVED')
+                                <span class="badge bg-danger text-light">{{ $bug->status }}</span>
+                            @endif
+                        </h5>
+                        <p class="card-text">{{ $bug->description }}</p>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
     </section>
 
     <section>
@@ -57,16 +44,19 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body mt-2">
-                        <h3>Add Comment</h3>
+                        <h3 class="card-title">Add Comment</h3>
                         <form method="post" action="{{ route('user.comment.add') }}">
                             @csrf
                             <div>
                                 <textarea name="comment_body" class="form-control" id="" cols="30" rows="6"></textarea>
-                                {{-- <input type="text" class="form-control" name="comment_body"> --}}
                                 <input type="hidden" name="bug_id" value="{{ $bug->id }}">
                             </div>
-                            <div class="mt-2">
+                            <div class="d-flex gap-2 form-group mt-2">
                                 <button type="submit" class="btn btn-primary">Send Message</button>
+                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample1" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample1">
+                                    <i class="bi bi-chat-dots-fill"></i> Comments
+                                </a>
                             </div>
                         </form>
                     </div>
@@ -77,8 +67,8 @@
                 <div class="card">
                     <div class="card-body mt-2">
                         @foreach ($tasks as $task)
-                            @if (Auth::user()->avatar)
-                                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="" align="left"
+                            @if ($task->users->avatar)
+                                <img src="{{ asset('storage/' . $task->users->avatar) }}" alt="" align="left"
                                     style="width: 40px; height: 40px; border-radius: 50%;">
                             @else
                                 <img src="{{ asset('nice') }}/assets/img/profile-img.jpg" alt="" align="left"
@@ -103,51 +93,60 @@
                 </div>
             </div>
             {{-- Card Comment --}}
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Comment :</h4>
-                        @foreach ($comments as $comment)
-                            <strong>{{ $comment->users->name }} -
-                                {{ $comment->created_at->diffForHumans() }}
-                                <a class="btn btn-primary m-lg-3" data-bs-toggle="collapse"
-                                    href="#collapseExample-{{ $comment->id }}" role="button" aria-expanded="false"
-                                    aria-controls="collapseExample">
-                                    Reply Comment
-                                </a></strong>
-                            <p>{{ $comment->message }}</p>
-                            <form method="post" action="{{ route('user.reply.add') }}">
-                                @csrf
-                                <div>
-                                    <input type="text" class="form-control form-control-sm" name="comment_body">
-                                    <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
+            <div class="collapse" id="collapseExample1">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="card-title">Comment :</h4>
+                                    @foreach ($comments as $comment)
+                                        <img src="{{ asset('storage/' . $comment->users->avatar) }}" alt=""
+                                            class="rounded-circle" style="width: 40px; height: 40px;">
+                                        <strong>{{ $comment->users->name }} -
+                                            {{ $comment->created_at->diffForHumans() }}
+                                            <a class="btn btn-primary m-lg-3" data-bs-toggle="collapse"
+                                                href="#collapseExample-{{ $comment->id }}" role="button"
+                                                aria-expanded="false" aria-controls="collapseExample">
+                                                Reply Comment
+                                            </a></strong>
+                                        <p>{{ $comment->message }}</p>
+                                        <a class="btn btn-primary mb-3" data-bs-toggle="collapse"
+                                            href="#collapse-{{ $comment->id }}" role="button" aria-expanded="false"
+                                            aria-controls="collapse">Reply</a>
+                                        <div class="collapse" id="collapse-{{ $comment->id }}">
+                                            <form method="post" action="{{ route('user.reply.add') }}">
+                                                @csrf
+                                                <div>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        name="comment_body">
+                                                    <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                                                </div>
+                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                    <input type="submit" class="btn btn-warning mt-2" value="Reply">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <br>
+                                        @foreach ($comment->comments as $reply)
+                                            <div class="collapse" id="collapseExample-{{ $comment->id }}">
+                                                <div class="media media-body p-3">
+                                                    <img src="{{ asset('storage/' . $comment->users->avatar) }}"
+                                                        alt="" class="rounded-circle"
+                                                        style="width: 40px; height: 40px;">
+                                                    <strong class="text-muted">{{ $reply->users->name }} -
+                                                        {{ $reply->created_at->diffForHumans() }}</strong>
+                                                    <p class="text-muted"> {{ $reply->message }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endforeach
                                 </div>
-                                <div>
-                                    <input type="submit" class="btn btn-warning mt-2" value="Reply" />
-                                </div>
-                            </form>
-                            <br>
-                            @foreach ($comment->comments as $reply)
-                                <div class="collapse" id="collapseExample-{{ $comment->id }}">
-                                    <div class="card card-body">
-                                        @if (Auth::user()->avatar)
-                                            <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt=""
-                                                align="left" style="width: 40px; height: 40px; border-radius: 50%;">
-                                        @else
-                                            <img src="{{ asset('nice') }}/assets/img/profile-img.jpg" alt=""
-                                                align="left" style="width: 40px; height: 40px; border-radius: 50%;">
-                                        @endif
-                                        <strong class="text-muted">{{ $reply->users->name }} -
-                                            {{ $reply->created_at->diffForHumans() }}</strong>
-                                        <p class="text-muted"> {{ $reply->message }}</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 @endsection

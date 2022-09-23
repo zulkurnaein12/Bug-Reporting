@@ -48,10 +48,21 @@
                                     <td>{{ $task->start }}</td>
                                     <td>{{ $task->end }}</td>
                                     <td>
-                                        <!-- Modal -->
-                                        <a name="" id="" class="btn btn-primary"
-                                            href="{{ route('user.task.edit', $task->id) }}" role="button">Finish This
-                                            Task</i></a>
+                                        @if ($task->status == 'PENDING')
+                                            <a name="" id="" class="btn btn-primary"
+                                                href="{{ route('user.task.edit', $task->id) }}" role="button">Finish This
+                                                Task</i></a>
+                                        @elseif ($task->status == 'WAITING APPROVAL')
+                                            <a name="" id="" class="btn btn-primary d-none"
+                                                href="{{ route('user.task.edit', $task->id) }}" role="button">Finish This
+                                                Task</i></a>
+                                        @elseif ($task->status == 'REJECTED')
+                                            <a name="" id="" class="btn btn-primary"
+                                                href="{{ route('user.task.edit', $task->id) }}" role="button">Finish This
+                                                Task</a>
+                                            <a name="" id="" class="btn btn-danger" href="#"
+                                                role="button"><i class="bi bi-question-octagon-fill"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                         </tbody>
@@ -60,38 +71,4 @@
                 </div>
             </div>
         </section>
-        {{-- @foreach ($tasks as $task)
-            <!-- Modal -->
-            <div class="modal fade" id="basicModal-{{ $task->id }}" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Update Task</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{ route('user.task.update', $task->id) }}" method="post">
-                                @csrf
-                                @if (@$task)
-                                    @method('PUT')
-                                @endif
-                                <label for="">Bug Name</label>
-                                <input type="text" class="form-control" name="bug_id" value="{{ $task->bugs->name }}">
-                                <div class="form-group mt-3">
-                                    <label for="">Description</label>
-                                    <textarea class="form-control" name="description" id="" rows="3">{{ $task->description ?? '' }}</textarea>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                            </form>
-                        </div>
-                        <div class="modal-footer d-none">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Basic Modal-->
-        @endforeach --}}
     @endsection

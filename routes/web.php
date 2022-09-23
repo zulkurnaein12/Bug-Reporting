@@ -32,6 +32,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// route User
 Route::middleware('role:user')->name('user.')->prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::resource('bug', UserBugController::class);
@@ -44,6 +45,7 @@ Route::middleware('role:user')->name('user.')->prefix('user')->group(function ()
     Route::post('/password/update', [UserPasswordController::class, 'update'])->name('password');
 });
 
+// route Admin
 Route::middleware('role:admin')->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('bug', BugController::class);

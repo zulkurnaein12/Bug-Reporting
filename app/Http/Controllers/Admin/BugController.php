@@ -19,7 +19,7 @@ class BugController extends Controller
      */
     public function index()
     {
-        $bugs = Bug::all();
+        $bugs = Bug::orderBy('created_at', 'desc')->get();
         return view('admin.bug.index', compact('bugs'));
     }
 

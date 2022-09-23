@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <table id="myDataTable" class="table">
+                    <table id="myDataTable" class="table table-hover table-responsive">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -48,9 +48,13 @@
                                     </td>
 
                                     <td>
-                                        <a name="" id="" class="btn btn-primary"
-                                            href="{{ route('user.bug.show', $bug->id) }}" role="button">Show
-                                            <i class="bi bi-eye-fill"></i></a>
+                                        <div class="container">
+                                            <div class="d-flex">
+                                                <a name="" id="" class="btn btn-primary"
+                                                    href="{{ route('user.bug.show', $bug->id) }}" role="button">Show <i
+                                                        class="bi bi-eye-fill"></i></a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
