@@ -17,7 +17,7 @@
     <section class="section">
         <div class="card">
             <div class="card-body">
-                <table id="myDataTable" class="table table-hover table-responsive">
+                <table class="table datatable">
                     <thead>
                         <tr>
                             <th>No</th>

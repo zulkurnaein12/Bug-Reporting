@@ -173,12 +173,21 @@
             </li><!-- End Dashboard Nav -->
             <li class="nav-heading">Pages</li>
             <li class="nav-item">
+                <a class="nav-link {{ Request()->routeIs('admin.user.*') ? '' : 'collapsed' }}"
+                    href="{{ route('admin.user.index') }}">
+                    <i class="bi bi-people-fill"></i>
+                    <span>User Management</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link {{ Request()->routeIs('admin.bug.*') ? '' : 'collapsed' }}"
                     href="{{ route('admin.bug.index') }}">
                     <i class="bi bi-bug"></i>
                     <span>Bug</span>
                 </a>
             </li>
+
             <!--End Dashboard Nav -->
         </ul>
     </aside><!-- End Sidebar-->

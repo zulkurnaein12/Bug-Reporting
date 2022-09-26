@@ -13,8 +13,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-body">
-
-                    <table id="myDataTable" class="table table-hover table-responsive">
+                    <table class="table datatable">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -52,7 +51,7 @@
                                         <div class="container">
                                             <div class="d-flex">
                                                 <a name="" id="" class="btn btn-primary"
-                                                    href="{{ route('user.bug.show', $bug->id) }}" role="button">Show <i
+                                                    href="{{ route('user.bug.show', $bug->id) }}" role="button"><i
                                                         class="bi bi-eye-fill"></i></a>
                                             </div>
                                         </div>

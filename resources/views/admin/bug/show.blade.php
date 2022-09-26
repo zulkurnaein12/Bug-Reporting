@@ -75,7 +75,7 @@
         <div class="card">
             <div class="card-body mt-3">
                 <h4 class="card-title">Tabel Task</h4>
-                <table class="table">
+                <table class="table datatable">
                     <thead class="table-primary">
                         <tr>
                             <th>No</th>

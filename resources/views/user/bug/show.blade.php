@@ -74,8 +74,6 @@
                                 <img src="{{ asset('nice') }}/assets/img/profile-img.jpg" alt="" align="left"
                                     style="width: 40px; height: 40px; border-radius: 50%;">
                             @endif
-                            {{-- <img src="{{ asset('nice') }}/assets/img/logo.png" alt="" align="left"
-                                style="width: 40px; height: 40px; border-radius: 50%;"> --}}
                             &nbsp;&nbsp;{{ $task->users->name }}
                             &nbsp;&nbsp;@if ($task->status == 'PENDING')
                                 <span class="badge bg-primary text-light">{{ $task->status }}</span>

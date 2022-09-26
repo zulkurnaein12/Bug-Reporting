@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BugController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\User\BugController as UserBugController;
 use App\Http\Controllers\User\CommentController;
@@ -54,4 +55,5 @@ Route::middleware('role:admin')->name('admin.')->prefix('admin')->group(function
     Route::patch('/profile/{id}', [AdminProfileController::class, 'update'])->name('profile.update');
     Route::get('/password', [PasswordController::class, 'edit'])->name('edit.password');
     Route::post('/password/update', [PasswordController::class, 'update'])->name('password');
+    Route::resource('user', AdminUserController::class);
 });

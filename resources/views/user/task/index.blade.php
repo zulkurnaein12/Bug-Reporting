@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body mt-3">
                     <h4 class="card-title">Tabel Task</h4>
-                    <table id="myDataTable" class="table">
+                    <table class="table datatable">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -29,7 +29,8 @@
                             @foreach ($tasks as $task)
                                 <tr>
                                     <td scope="row">{{ $loop->iteration }}</td>
-                                    <td><a href="{{ route('user.bug.show', $task->bugs->id) }}">{{ $task->bugs->name }}</a></td>
+                                    <td><a href="{{ route('user.bug.show', $task->bugs->id) }}">{{ $task->bugs->name }}</a>
+                                    </td>
                                     <td>
                                         @if ($task->status == 'PENDING')
                                             <span class="badge bg-primary text-light"
@@ -60,8 +61,27 @@
                                             <a name="" id="" class="btn btn-primary"
                                                 href="{{ route('user.task.edit', $task->id) }}" role="button">Finish This
                                                 Task</a>
-                                            <a name="" id="" class="btn btn-danger" href="#"
-                                                role="button"><i class="bi bi-question-octagon-fill"></i></a>
+                                            <!-- Modal -->
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#basicModal-{{ $task->id }}"><i
+                                                    class="bi bi-question-octagon-fill"></i></a>
+                                            </button>
+                                            @foreach ($tasks as $task)
+                                                <div class="modal fade" id="basicModal-{{ $task->id }}" tabindex="-1">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Alert</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>{{ $task->description }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         @endif
                                     </td>
                                 </tr>
