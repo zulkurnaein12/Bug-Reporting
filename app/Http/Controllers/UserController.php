@@ -12,11 +12,11 @@ class UserController extends Controller
 {
     public function index()
     {
-        $bugs = Bug::count();
+        $bugs = Task::where('user_id', Auth::user()->id)->count();
         $bugtask = Task::where('status', 'WAITING APPROVAL')->count();
         $tasks = Task::where('status', 'PENDING')->count();
         $task = Task::where('status', 'APPROVED')->count();
-        $solved = Bug::where('status', 'SOLVED')->count();
+        $solved = Task::where('status', 'APPROVED')->count();
         return view('user.dashboard', compact('bugs', 'tasks', 'bugtask', 'task', 'solved'));
     }
 }

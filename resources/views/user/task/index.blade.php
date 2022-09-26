@@ -29,7 +29,7 @@
                             @foreach ($tasks as $task)
                                 <tr>
                                     <td scope="row">{{ $loop->iteration }}</td>
-                                    <td>{{ $task->bugs->name }}</td>
+                                    <td><a href="{{ route('user.bug.show', $task->bugs->id) }}">{{ $task->bugs->name }}</a></td>
                                     <td>
                                         @if ($task->status == 'PENDING')
                                             <span class="badge bg-primary text-light"

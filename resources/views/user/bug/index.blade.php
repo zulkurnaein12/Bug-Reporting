@@ -33,7 +33,8 @@
                                     <td>{{ $bug->description }}</td>
                                     <td>
                                         @if ($bug->image)
-                                            <a href="{{ asset('storage/' . $bug->image) }}" width="70px">Image</a>
+                                            <a target="_blank" href="{{ asset('storage/' . $bug->image) }}"
+                                                width="70px">Image</a>
                                         @else
                                             N/A
                                         @endif
