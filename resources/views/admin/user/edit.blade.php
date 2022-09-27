@@ -47,7 +47,7 @@
                     <div class="row mb-3">
                         <label for="" class="col-sm-2 col-form-label">Image</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="file" id="image" name="image"
+                            <input class="form-control" type="file" id="avatar" name="avatar"
                                 value="{{ $user->image ?? '' }}">
                         </div>
                     </div>
@@ -55,12 +55,18 @@
                     <div class="row mb-3">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Phone</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputText" name="phone" id="" required
+                            <input type="number" class="form-control" id="inputText" name="phone" id="" required
                                 aria-describedby="helpId" value="{{ $user->phone ?? '' }}">
                         </div>
                     </div>
 
-
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Job</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputText" name="job" id="" required
+                                aria-describedby="helpId" placeholder="Job" value="{{ old('job') }}">
+                        </div>
+                    </div>
 
                     <div class="text-end">
                         <button type="submit" class="btn btn-primary">Submit</button>

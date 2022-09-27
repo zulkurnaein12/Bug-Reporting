@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Bug;
 use App\Models\Task;
 use App\Models\User;
-use DateTime;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -117,10 +116,10 @@ class TaskController extends Controller
     public function destroy($id)
     {
 
-        $task = Task::findOrFail($id);
+        // $task = Task::findOrFail($id);
 
-        $task->delete();
+        // $task->delete();
 
-        return redirect()->route('admin.bug.index');
+        // return redirect()->route('admin.bug.index');
     }
 }

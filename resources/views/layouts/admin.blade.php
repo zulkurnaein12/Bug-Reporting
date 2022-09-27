@@ -175,7 +175,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Request()->routeIs('admin.user.*') ? '' : 'collapsed' }}"
                     href="{{ route('admin.user.index') }}">
-                    <i class="bi bi-people-fill"></i>
+                    <i class="bi bi-people"></i>
                     <span>User Management</span>
                 </a>
             </li>
@@ -188,6 +188,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link {{ Request()->routeIs('admin.history.*') ? '' : 'collapsed' }}"
+                    href="{{ route('admin.history') }}">
+                    <i class="bi bi-clock-history"></i>
+                    <span>History</span>
+                </a>
+            </li>
             <!--End Dashboard Nav -->
         </ul>
     </aside><!-- End Sidebar-->

@@ -50,7 +50,7 @@
 
                     <!-- BTAS -->
 
-                    {{-- <div class="col-md-12">
+                    <div class="col-md-12">
                         <table class="table table-borderless">
                             <thead>
                                 <th>Task</th>
@@ -89,7 +89,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </div> --}}
+                    </div>
                 </div>
 
 

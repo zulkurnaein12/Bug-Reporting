@@ -129,7 +129,7 @@
                                         @foreach ($comment->comments as $reply)
                                             <div class="collapse" id="collapseExample-{{ $comment->id }}">
                                                 <div class="media media-body p-3">
-                                                    <img src="{{ asset('storage/' . $comment->users->avatar) }}"
+                                                    <img src="{{ asset('storage/' . $reply->users->avatar) }}"
                                                         alt="" class="rounded-circle"
                                                         style="width: 40px; height: 40px;">
                                                     <strong class="text-muted">{{ $reply->users->name }} -

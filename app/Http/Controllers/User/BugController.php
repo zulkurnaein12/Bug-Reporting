@@ -66,8 +66,6 @@ class BugController extends Controller
 
         $bug = Bug::findOrFail($id);
         $tasks = $bug->tasks;
-
-        $bug = \App\Models\Bug::findOrFail($id);
         $comments = $bug->comments->load('comments');
         // return response()->json($comments);
         return view('user.bug.show', ['bug' => $bug, 'task' => $tasks], compact('comments', 'tasks'));

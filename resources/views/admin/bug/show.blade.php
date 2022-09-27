@@ -20,20 +20,20 @@
         <div class="card">
             <div class="card-body mt-3">
                 <h4 class="card-title">Show Bug</h4>
-                <b>Name</b><br /> {{ $bug->name }}<br><br>
+                <b>Name</b><br> {{ $bug->name }}<br><br>
                 <b>Description</b></br> {{ $bug->description }}<br><br>
-                <b>Image</b></br>
+                <b>Image</b><br>
                 @if ($bug->image)
-                    <img src="{{ asset('storage/' . $bug->image) }}" width="128px">
+                    <img src="{{ asset('storage/' . $bug->image) }}" width="509px" height="171px">
                 @else
                     No Image
                 @endif
                 <br><br>
-                <b>Status</b></br>
+                <b>Status</b><br>
                 @if ($bug->status == 'NO SOLVED')
-                    <span class="badge bg-danger text-light" style="font-size: 14px">{{ $bug->status }}</span>
+                    <span class="badge bg-danger text-light" style="font-size: 16px">{{ $bug->status }}</span>
                 @elseif($bug->status == 'SOLVED')
-                    <span class="badge bg-info text-light" style="font-size: 14px">{{ $bug->status }}</span>
+                    <span class="badge bg-info text-light" style="font-size: 16px">{{ $bug->status }}</span>
                 @endif
                 <br><br>
             </div>
@@ -76,7 +76,7 @@
             <div class="card-body mt-3">
                 <h4 class="card-title">Tabel Task</h4>
                 <table class="table datatable">
-                    <thead class="table-primary">
+                    <thead>
                         <tr>
                             <th>No</th>
                             <th>Name</th>

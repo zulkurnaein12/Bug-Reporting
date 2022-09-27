@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BugController;
+use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\TaskController;
@@ -56,4 +57,5 @@ Route::middleware('role:admin')->name('admin.')->prefix('admin')->group(function
     Route::get('/password', [PasswordController::class, 'edit'])->name('edit.password');
     Route::post('/password/update', [PasswordController::class, 'update'])->name('password');
     Route::resource('user', AdminUserController::class);
+    Route::get('/history', [HistoryController::class, 'index'])->name('history');
 });

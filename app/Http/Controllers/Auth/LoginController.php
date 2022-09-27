@@ -23,6 +23,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
     public function authenticated(Request $request, $user)
     {
+        activity()->log('logged in');
         if ($user->hasRole('admin')) {
             return redirect()->route('admin.index');
         }

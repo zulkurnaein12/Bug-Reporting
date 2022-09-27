@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+
     public function store(Request $request)
     {
         $comments = new Comment();

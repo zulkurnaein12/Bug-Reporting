@@ -29,10 +29,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @php $no = 1; @endphp --}}
                         @foreach ($bugs as $bug)
                             <tr>
-                                {{-- <td>{{ ($bugs->currentPage() - 1) * $bugs->perPage() + $loop->iteration }}</td> --}}
                                 <td scope="row">{{ $loop->iteration }}</td>
                                 <td>{{ $bug->name }}</td>
                                 <td>{{ $bug->description }}</td>
@@ -55,15 +53,13 @@
 
                                 <td>
                                     <div class="container">
-                                        <div class="d-flex">
+                                        <div class="d-flex gap-1">
                                             <a name="" id="" class="btn btn-success"
                                                 href="{{ route('admin.bug.edit', $bug->id) }}" role="button">
                                                 <i class="bi bi-pencil"></i></a>
-
                                             <a name="" id="" class="btn btn-primary"
                                                 href="{{ route('admin.bug.show', $bug->id) }}" role="button">
                                                 <i class="bi bi-eye-fill"></i></a>
-
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                 data-bs-target="#verticalycentered">
                                                 <i class="bi bi-trash"></i>
@@ -84,13 +80,9 @@
                                                             <form class="d-inline"
                                                                 action="{{ route('admin.bug.destroy', [$bug->id]) }}"
                                                                 method="POST">
-
                                                                 @csrf
-
                                                                 <input type="hidden" name="_method" value="DELETE">
-
                                                                 <input type="submit" value="Delete" class="btn btn-danger">
-
                                                             </form>
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Cancel</button>

@@ -36,6 +36,7 @@ class ProfileController extends Controller
         }
 
         $user->update($data);
+        activity()->performedOn($user)->log('Update Profile');
         return redirect()->route('user.profile.index');
     }
 }

@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
 
 class ProfileController extends Controller
 {
@@ -38,6 +36,7 @@ class ProfileController extends Controller
         }
 
         $user->update($data);
+        activity()->performedOn($user)->log('Update Profile');
         return redirect()->route('admin.profile.index');
     }
 }

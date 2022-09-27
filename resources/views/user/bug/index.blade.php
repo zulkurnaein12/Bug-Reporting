@@ -51,7 +51,7 @@
                                         <div class="container">
                                             <div class="d-flex">
                                                 <a name="" id="" class="btn btn-primary"
-                                                    href="{{ route('user.bug.show', $bug->id) }}" role="button"><i
+                                                    href="{{ route('user.bug.show', $bug->id) }}" role="button">Show <i
                                                         class="bi bi-eye-fill"></i></a>
                                             </div>
                                         </div>

@@ -46,18 +46,19 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required',
-            'image' => 'image|nullable',
+            'avatar' => 'image|nullable',
             'job' => 'nullable',
             'phone' => 'required',
             'password' => 'required',
         ]);
-        if ($request->file('image')) {
-            $file = $request->file('image')->store('users', 'public');
-            $data['image'] = $file;
+        if ($request->file('avatr')) {
+            $file = $request->file('avatar')->store('avatar', 'public');
+            $data['avatar'] = $file;
         }
 
         $user = User::create($data);
         $user->assignRole('user');
+        activity()->performedOn($user)->log('Created User');
         return redirect()->route('admin.user.index');
     }
 
@@ -70,7 +71,7 @@ class UserController extends Controller
     public function show(Request $request,  $id)
     {
         $user = User::findOrFail($id);
-        $tasks = $user->task;
+        $tasks = $user->tasks;
         return view('admin.user.show', compact('user', 'tasks'));
     }
 
@@ -100,16 +101,19 @@ class UserController extends Controller
             'email' => 'required',
             'image' => 'image|nullable',
             'phone' => 'required',
+            'job' => 'required'
         ]);
+        // dd($data);
 
-        if ($request->file('image')) {
-            $file = $request->file('image')->store('users', 'public');
-            $data['image'] = $file;
+        if ($request->file('avatar')) {
+            $file = $request->file('avatar')->store('avatar', 'public');
+            $data['avatar'] = $file;
         }
 
 
         $user = User::find($id);
         $user->update($data);
+        activity()->performedOn($user)->log('Updated User');
         return redirect()->route('admin.user.index');
     }
 
@@ -123,6 +127,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
+        activity()->performedOn($user)->log('Deleted User');
         return redirect()->route('admin.user.index');
     }
 }
