@@ -37,6 +37,7 @@ class PasswordController extends Controller
         //update password in table user
         $user->password = bcrypt($request->get('password'));
         $user->save();
+        alert()->success('Success', 'Password has been Updated');
         //redirect back
         return redirect()->back();
     }

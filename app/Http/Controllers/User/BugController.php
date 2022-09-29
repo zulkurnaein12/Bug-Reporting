@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bug;
+use App\Models\Comment;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -63,10 +64,10 @@ class BugController extends Controller
      */
     public function show($id)
     {
-
         $bug = Bug::findOrFail($id);
         $tasks = $bug->tasks;
         $comments = $bug->comments->load('comments');
+        // $comments = Comment::orderBy('created_at', 'desc');
         // return response()->json($comments);
         return view('user.bug.show', ['bug' => $bug, 'task' => $tasks], compact('comments', 'tasks'));
     }

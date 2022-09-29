@@ -36,6 +36,7 @@ class ProfileController extends Controller
         }
 
         $user->update($data);
+        alert()->success('Success', 'Profile has been Updated');
         activity()->performedOn($user)->log('Update Profile');
         return redirect()->route('admin.profile.index');
     }

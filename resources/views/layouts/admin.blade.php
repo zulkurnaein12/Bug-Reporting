@@ -4,12 +4,12 @@
 @include('layouts.header')
 
 <body>
-
+    @include('sweetalert::alert')
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a class="logo d-flex align-items-center">
+            <a href="{{ route('admin.index') }}" class="logo d-flex align-items-center">
                 <img src="{{ asset('sign-in/assets/brand/logo.png') }}" alt="">
                 <span class="d-none d-lg-block">BUG ROPORTING</span>
             </a>
