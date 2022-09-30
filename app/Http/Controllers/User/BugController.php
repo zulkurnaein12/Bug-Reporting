@@ -67,8 +67,6 @@ class BugController extends Controller
         $bug = Bug::findOrFail($id);
         $tasks = $bug->tasks;
         $comments = $bug->comments->load('comments');
-        // $comments = Comment::orderBy('created_at', 'desc');
-        // return response()->json($comments);
         return view('user.bug.show', ['bug' => $bug, 'task' => $tasks], compact('comments', 'tasks'));
     }
 

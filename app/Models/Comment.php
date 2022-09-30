@@ -17,7 +17,7 @@ class Comment extends Model
 
     public function comments()
     {
-        return $this->morphMany($this, 'commentable');
+        return $this->morphMany($this, 'commentable')->latest();
     }
 
     public function users()
