@@ -126,6 +126,7 @@
                                             </form>
                                         </div>
                                         <br>
+                                        <hr>
                                         @foreach ($comment->comments as $reply)
                                             <div class="collapse" id="collapseExample-{{ $comment->id }}">
                                                 <div class="media media-body p-3">

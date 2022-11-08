@@ -56,6 +56,7 @@ class TaskController extends Controller
             'bug_id' => $request->bug_id,
             'user_id' => $request->user_id,
         ], $data);
+        flash()->addSuccess('Task has been Created!');
         return redirect()->route('admin.bug.show', $bug->id);
     }
 
@@ -103,6 +104,7 @@ class TaskController extends Controller
         if ($request->status == 'APPROVED') {
             $data['end'] = now();
         }
+        flash()->addSuccess('Task has been Updated!');
         $task->update($data);
         return redirect()->route('admin.bug.show', $bug->id);
     }

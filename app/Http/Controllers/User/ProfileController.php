@@ -36,7 +36,9 @@ class ProfileController extends Controller
         }
 
         $user->update($data);
+        flash()->addSuccess('Profile has been Updated!');
         activity()->performedOn($user)->log('Update Profile');
+
         return redirect()->route('user.profile.index');
     }
 }

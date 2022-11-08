@@ -55,7 +55,7 @@ class BugController extends Controller
 
 
         $bug = Bug::create($data);
-        alert()->success('Success', 'Bug has been created');
+        flash()->addSuccess('Bug has been Created!');
         activity()->performedOn($bug)->log('Create Bug');
         return redirect()->route('admin.bug.index');
     }
@@ -108,7 +108,7 @@ class BugController extends Controller
         }
         $bug = Bug::find($id);
         $bug->update($data);
-        alert()->success('Success', 'Bug has been Updated');
+        flash()->addSuccess('Bug has been Updated!');
         activity()->performedOn($bug)->log('Update Bug');
         return redirect()->route('admin.bug.index');
     }
@@ -124,7 +124,7 @@ class BugController extends Controller
         $bug = Bug::findOrFail($id);
 
         $bug->delete();
-        alert()->error('Delete', 'Bug has been Deleted');
+        flash()->addSuccess('Bug has been Deleted!');;
         activity()->performedOn($bug)->log('Delete Bug');
         return redirect()->route('admin.bug.index');
     }

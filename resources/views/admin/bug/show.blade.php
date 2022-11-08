@@ -75,50 +75,52 @@
         <div class="card">
             <div class="card-body mt-3">
                 <h4 class="card-title">Tabel Task</h4>
-                <table class="table datatable">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Status</th>
-                            <th>Start</th>
-                            <th>End</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($tasks as $task)
+                <div class="table-responsive">
+                    <table class="table datatable">
+                        <thead>
                             <tr>
-                                <td scope="row">{{ $loop->iteration }}</td>
-                                <td>{{ $task->users->name }}</td>
-                                <td>
-                                    @if ($task->status == 'PENDING')
-                                        <span class="badge bg-primary text-light"
-                                            style="font-size: 13px">{{ $task->status }}</span>
-                                    @elseif($task->status == 'WAITING APPROVAL')
-                                        <span class="badge bg-warning text-light"
-                                            style="font-size: 13px">{{ $task->status }}</span>
-                                    @elseif($task->status == 'APPROVED')
-                                        <span class="badge bg-success text-light"
-                                            style="font-size: 13px">{{ $task->status }}</span>
-                                    @elseif($task->status == 'REJECTED')
-                                        <span class="badge bg-danger text-light"
-                                            style="font-size: 13px">{{ $task->status }}</span>
-                                    @endif
-                                </td>
-                                <td>{{ $task->start }}</td>
-                                <td>{{ $task->end }}</td>
-                                <td>
-                                    <!-- Modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#basicModal-{{ $task->id }}">
-                                        Show <i class="bi bi-eye-fill"></i></a>
-                                    </button>
-                                </td>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Action</th>
                             </tr>
-                    </tbody>
-                    @endforeach
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($tasks as $task)
+                                <tr>
+                                    <td scope="row">{{ $loop->iteration }}</td>
+                                    <td>{{ $task->users->name }}</td>
+                                    <td>
+                                        @if ($task->status == 'PENDING')
+                                            <span class="badge bg-primary text-light"
+                                                style="font-size: 13px">{{ $task->status }}</span>
+                                        @elseif($task->status == 'WAITING APPROVAL')
+                                            <span class="badge bg-warning text-light"
+                                                style="font-size: 13px">{{ $task->status }}</span>
+                                        @elseif($task->status == 'APPROVED')
+                                            <span class="badge bg-success text-light"
+                                                style="font-size: 13px">{{ $task->status }}</span>
+                                        @elseif($task->status == 'REJECTED')
+                                            <span class="badge bg-danger text-light"
+                                                style="font-size: 13px">{{ $task->status }}</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $task->start }}</td>
+                                    <td>{{ $task->end }}</td>
+                                    <td>
+                                        <!-- Modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#basicModal-{{ $task->id }}">
+                                            Show <i class="bi bi-eye-fill"></i></a>
+                                        </button>
+                                    </td>
+                                </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
+                </div>
             </div>
         </div>
     </section>

@@ -4,9 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bug;
-use App\Models\Comment;
-use App\Models\Task;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class BugController extends Controller

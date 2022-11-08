@@ -26,8 +26,10 @@ class LoginController extends Controller
     {
         activity()->log('logged in');
         if ($user->hasRole('admin')) {
+            flash()->addSuccess('Welcome To Bug Reporting!');
             return redirect()->route('admin.index');
         }
+        flash()->addSuccess('Welcome To Bug Reporting!');
         return redirect()->route('user.index');
     }
     /**

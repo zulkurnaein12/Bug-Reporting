@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $user = User::create($data);
         $user->assignRole('user');
-        alert()->success('Success', 'User has been Created');
+        flash()->addSuccess('User has been Created!');
         activity()->performedOn($user)->log('Created User');
         return redirect()->route('admin.user.index');
     }
@@ -114,7 +114,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->update($data);
-        alert()->success('Success', 'User has been Updated');
+        flash()->addSuccess('User has been Updated!');
         activity()->performedOn($user)->log('Updated User');
         return redirect()->route('admin.user.index');
     }
@@ -129,7 +129,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        alert()->error('Delete', 'User has been Deleted');
+        flash()->addSuccess('User has been Deleted!');
         activity()->performedOn($user)->log('Deleted User');
         return redirect()->route('admin.user.index');
     }
