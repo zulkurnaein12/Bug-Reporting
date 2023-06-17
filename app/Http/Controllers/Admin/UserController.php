@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bug;
-use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -42,24 +39,32 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // dd($request);
+        $this->validate(
+            $request,
+            [
+                'name' => 'required|string',
+                'email' => 'required',
+                'avatar' => 'image|nullable',
+                'job' => 'nullable',
+                'phone' => 'required',
+                'password' => 'required',
+            ]
+        );
 
-        $data = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required',
-            'avatar' => 'image|nullable',
-            'job' => 'nullable',
-            'phone' => 'required',
-            'password' => 'required',
-        ]);
-        if ($request->file('avatr')) {
+        $data =  new User();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->job = $request->job;
+        $data->phone = $request->phone;
+        $data->password = bcrypt($request->password);
+        if ($request->file('avatar')) {
             $file = $request->file('avatar')->store('avatar', 'public');
             $data['avatar'] = $file;
         }
-
-        $user = User::create($data);
-        $user->assignRole('user');
+        $data->save();
+        $data->assignRole('user');
         flash()->addSuccess('User has been Created!');
-        activity()->performedOn($user)->log('Created User');
+        activity()->performedOn($data)->log('Created User');
         return redirect()->route('admin.user.index');
     }
 

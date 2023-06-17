@@ -22,7 +22,7 @@
                 <form action="{{ route('admin.user.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                        <label for="" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="inputText" name="name" id="" required
                                 aria-describedby="helpId" placeholder="Username">
@@ -44,8 +44,8 @@
                     <div class="row mb-3">
                         <label for="" class="col-sm-2 col-form-label">Image</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="file" id="image" name="image"
-                                value="{{ old('image') }}">
+                            <input class="form-control" type="file" id="avatar" name="avatar"
+                                value="{{ old('avatar') }}">
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
                             <input type="password" class="form-control" id="inputText" name="password" id=""
-                                required aria-describedby="helpId" placeholder="Job">
+                                required aria-describedby="helpId" placeholder="Password">
                         </div>
                     </div>
 

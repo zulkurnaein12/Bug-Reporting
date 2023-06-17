@@ -64,6 +64,7 @@
                                         {{ $stat }}</option>
                                 @endforeach
                             </select>
+                            
                         </div>
                     </div>
                     <div class="text-end">

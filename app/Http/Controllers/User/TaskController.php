@@ -77,7 +77,7 @@ class TaskController extends Controller
         $task = Task::find($id);
         $task->status = 'WAITING APPROVAL';
         $task->save();
-        flash()->addInfo('Finish This Task!');
+        flash()->addSuccess('Finish This Task!');
         activity()->performedOn($task)->log('Finish This Task');
         return redirect()->route('user.task.index');
     }
